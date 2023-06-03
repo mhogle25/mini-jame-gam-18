@@ -5,18 +5,29 @@ using UnityEngine.Events;
 
 public class Splatterer : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer splatterPrefab = null;
+    [SerializeField] private Splatter splatterPrefab = null;
     [SerializeField] private int splatCount = 5;
     [SerializeField] private float radius = 0.5f;
 
-    public void CreateSplatter(Vector2 relativePos)
+    private readonly Dictionary<PaintColor, List<Splatter>> splatters = new();
+
+    /// <summary>
+    /// ooga booga
+    /// </summary>
+    /// <param name="paintColor">color</param>
+    /// <param name="relativePos">position</param>
+    public void CreateSplatter(PaintColor paintColor, Vector2 relativePos)
     {
         for (int i = 0; i < this.splatCount; i++)
         {
             Vector2 randPos = Random.insideUnitCircle * this.radius;
-            SpriteRenderer splatter = Instantiate(this.splatterPrefab);
+            Splatter splatter = Instantiate(this.splatterPrefab);
+            splatter.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
             splatter.transform.position = relativePos + randPos;
-            Debug.Log($"splatter pos: {splatter.transform.position}");
+
+            this.splatters[paintColor].Add(splatter);
         }
     }
+
+
 }

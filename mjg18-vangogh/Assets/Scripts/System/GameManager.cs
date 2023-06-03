@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => GameManager.instance;
     private static GameManager instance = null;
 
+    private Dictionary<PaintColor, ColorInfo> colorInfo = new()
+    {
+        { PaintColor.Red,   new ColorInfo { Hue = Color.red } },
+        { PaintColor.Green, new ColorInfo { Hue = Color.green } },
+        { PaintColor.Blue,  new ColorInfo { Hue = Color.blue } },
+    };
+
     private void Awake()
     {
         if (GameManager.Instance != null)
@@ -41,6 +49,15 @@ public class GameManager : MonoBehaviour
         this.state?.Invoke();
     }
 
+    public ColorInfo GetColorInfo(PaintColor paintColor)
+    {
+        if (this.colorInfo.ContainsKey(paintColor))
+            return null;
+
+        return this.colorInfo[paintColor];
+    }
+
+    #region States
     private void StatePrecombat()
     {
         if (this.TimeRemaining < 0)
@@ -83,7 +100,9 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    #endregion
 
+    #region Game Info
     private PlayerController InstantiatePlayer(Vector2 startingPosition)
     {
         PlayerController player = Instantiate(this.playerPrefab);
@@ -92,4 +111,5 @@ public class GameManager : MonoBehaviour
     }
 
     private void Countdown() => this.gameInfo.timeRemaining -= Time.deltaTime;
+    #endregion
 }
