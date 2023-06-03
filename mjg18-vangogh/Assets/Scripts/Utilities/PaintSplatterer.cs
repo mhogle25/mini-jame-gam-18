@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PaintSplatterer : MonoBehaviour
 {
-    [SerializeField] private Splatter splatterPrefab = null;
+    [SerializeField] private Splatter[] splatterPrefabs = { };
     [SerializeField] private int splatCount = 5;
     [SerializeField] private float radius = 0.5f;
 
@@ -19,11 +19,17 @@ public class PaintSplatterer : MonoBehaviour
         for (int i = 0; i < splatCount; i++)
         {
             Vector2 randPos = Random.insideUnitCircle * radius;
-            Splatter splatter = Instantiate(this.splatterPrefab);
+            Splatter splatter = InstantiateRandomSplatter();
             splatter.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
             splatter.transform.position = relativePos + randPos;
 
             this.splatters[paintColor].Add(splatter);
         }
+    }
+
+    private Splatter InstantiateRandomSplatter()
+    {
+        int randomIndex = Random.Range(0, this.splatterPrefabs.Length);
+        return Instantiate(this.splatterPrefabs[randomIndex]);
     }
 }
