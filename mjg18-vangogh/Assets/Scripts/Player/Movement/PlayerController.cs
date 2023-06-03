@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 100f;
+    public float moveSpeed = 4f;
     public Rigidbody2D rb;
 
     public Animator animator;
