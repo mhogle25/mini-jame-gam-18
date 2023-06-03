@@ -6,10 +6,7 @@ public class Splatter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite = null;
 
-    public void SetColor(Color32 color)
-    {
-        this.sprite.color = color;
-    }
+    public void SetColor(Color32 color) => this.sprite.color = color;
 
     // Start is called before the first frame update
     void Start()

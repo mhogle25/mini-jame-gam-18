@@ -11,18 +11,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float precombatDuration = 100f;
     [SerializeField] private float combatDuration = 1000f;
     [Header("Static Utilities")]
-    [SerializeField] private Splatterer splatterer = null;
+    [SerializeField] private PaintSplatterer splatterer = null;
 
-    private GameInfo gameInfo = null;
+    private GameInfo gameInfo = new();
     private Action state = null;
 
-    public PlayerController Player => this.gameInfo?.player;
-    public float? TimeRemaining => this.gameInfo?.timeRemaining;
+    public PlayerController Player => this.gameInfo.Player;
+    public float TimeRemaining => this.gameInfo.TimeRemaining;
+    public PaintSplatterer Splatterer => this.splatterer;
 
     public static GameManager Instance => GameManager.instance;
     private static GameManager instance = null;
 
-    private Dictionary<PaintColor, ColorInfo> colorInfo = new()
+    private readonly Dictionary<PaintColor, ColorInfo> colorInfo = new()
     {
         { PaintColor.Red,   new ColorInfo { Hue = Color.red } },
         { PaintColor.Green, new ColorInfo { Hue = Color.green } },
@@ -79,20 +80,20 @@ public class GameManager : MonoBehaviour
 
     private void SetStatePrecombat()
     {
-        if (this.gameInfo is not null)
-            Destroy(this.gameInfo.player);
+        if (this.Player != null)
+            Destroy(this.Player);
 
         this.gameInfo = new GameInfo
         {
-            player = InstantiatePlayer(this.playerStartingPosition),
-            timeRemaining = this.precombatDuration
+            Player = InstantiatePlayer(this.playerStartingPosition),
+            TimeRemaining = this.precombatDuration
         };
         this.state = StatePrecombat;
     }
 
     private void SetStateCombat()
     {
-        this.gameInfo.timeRemaining = this.combatDuration;
+        this.gameInfo.TimeRemaining = this.combatDuration;
         this.state = StatePrecombat;
     }
 
@@ -110,6 +111,6 @@ public class GameManager : MonoBehaviour
         return player;
     }
 
-    private void Countdown() => this.gameInfo.timeRemaining -= Time.deltaTime;
+    private void Countdown() => this.gameInfo.TimeRemaining -= Time.deltaTime;
     #endregion
 }

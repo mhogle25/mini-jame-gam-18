@@ -1,5 +1,5 @@
 public class GameInfo
 {
-    public PlayerController player;
-    public float timeRemaining;
+    public PlayerController Player { get; set; }
+    public float TimeRemaining { get; set; }
 }
