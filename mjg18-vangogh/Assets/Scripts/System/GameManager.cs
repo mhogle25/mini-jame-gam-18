@@ -8,16 +8,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController playerPrefab;
     [SerializeField] private Vector2 playerStartingPosition;
     [Header("Time")]
-    [SerializeField] private float precombatDuration = 100f;
-    [SerializeField] private float combatDuration = 1000f;
+    [SerializeField] private float precombatDuration = 10f;
+    [SerializeField] private float combatDuration = 100f;
     [Header("Static Utilities")]
     [SerializeField] private PaintSplatterer splatterer = null;
 
-    private GameInfo gameInfo = new();
     private Action state = null;
+    private PlayerController player = null;
+    public float timeRemaining = 0f;
 
-    public PlayerController Player => this.gameInfo.Player;
-    public float TimeRemaining => this.gameInfo.TimeRemaining;
+    public PlayerController Player => this.player;
+    public float TimeRemaining => this.timeRemaining;
     public PaintSplatterer Splatterer => this.splatterer;
 
     public static GameManager Instance => GameManager.instance;
@@ -25,9 +26,9 @@ public class GameManager : MonoBehaviour
 
     private readonly Dictionary<PaintColor, ColorInfo> colorInfo = new()
     {
-        { PaintColor.Red,   new ColorInfo { Hue = Color.red } },
-        { PaintColor.Green, new ColorInfo { Hue = Color.green } },
-        { PaintColor.Blue,  new ColorInfo { Hue = Color.blue } },
+        { PaintColor.Red,   new ColorInfo { Hue = Color.red, Damage = 5 } },
+        { PaintColor.Green, new ColorInfo { Hue = Color.green, HurtRadius = 1.5f } },
+        { PaintColor.Blue,  new ColorInfo { Hue = Color.blue, Stuns = true } },
     };
 
     private void Awake()
@@ -80,20 +81,19 @@ public class GameManager : MonoBehaviour
 
     private void SetStatePrecombat()
     {
+        Debug.Log("State Precombat");
         if (this.Player != null)
             Destroy(this.Player);
 
-        this.gameInfo = new GameInfo
-        {
-            Player = InstantiatePlayer(this.playerStartingPosition),
-            TimeRemaining = this.precombatDuration
-        };
+        this.player = InstantiatePlayer(this.playerStartingPosition);
+        this.timeRemaining = this.precombatDuration;
         this.state = StatePrecombat;
     }
 
     private void SetStateCombat()
     {
-        this.gameInfo.TimeRemaining = this.combatDuration;
+        Debug.Log("State Combat");
+        this.timeRemaining = this.combatDuration;
         this.state = StatePrecombat;
     }
 
@@ -111,6 +111,6 @@ public class GameManager : MonoBehaviour
         return player;
     }
 
-    private void Countdown() => this.gameInfo.TimeRemaining -= Time.deltaTime;
+    private void Countdown() => this.timeRemaining -= Time.deltaTime;
     #endregion
 }
