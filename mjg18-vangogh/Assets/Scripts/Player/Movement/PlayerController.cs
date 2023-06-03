@@ -26,6 +26,22 @@ public class PlayerController : MonoBehaviour
        animator.SetFloat("Horizontal", movement.x);
        animator.SetFloat("Vertical", movement.y);
        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+       //attacking, runs animations and shit
+       if (Input.GetKeyDown("j"))
+        {
+            Attack();
+        }
+
+
+    }
+
+    void Attack()
+    {
+        //Play an attack animation
+        animator.SetTrigger("Attack");
+        //Detect enemies in range of attack
+        //Apply damage
     }
 
     void FixedUpdate()
