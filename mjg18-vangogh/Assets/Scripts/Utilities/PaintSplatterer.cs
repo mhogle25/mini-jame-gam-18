@@ -20,8 +20,12 @@ public class PaintSplatterer : MonoBehaviour
         {
             Vector2 randPos = Random.insideUnitCircle * radius;
             Splatter splatter = InstantiateRandomSplatter();
+            Debug.Log(splatter);
             splatter.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
             splatter.transform.position = relativePos + randPos;
+
+            if (!this.splatters.ContainsKey(paintColor))
+                this.splatters[paintColor] = new();
 
             this.splatters[paintColor].Add(splatter);
         }
