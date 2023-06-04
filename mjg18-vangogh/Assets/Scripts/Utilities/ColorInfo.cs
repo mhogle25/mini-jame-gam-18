@@ -6,6 +6,7 @@ public class ColorInfo
 {
     public Color32 Hue { get; set; } = Color.white;
     public int Damage { get; set; } = 3;
-    public float HurtRadius { get; set; } = 1f;
+    public float SplatRadius { get; set; } = 0.5f;
+    public int SplatCount { get; set; } = 5;
     public bool Stuns { get; set; } = true;
 }

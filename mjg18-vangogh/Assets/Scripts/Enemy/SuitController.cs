@@ -2,37 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using System;
 
 [RequireComponent(typeof(AIDestinationSetter))]
-public class SuitController : EnemyController
+public class SuitController : EntityController
 {
-    public float moveSpeed = 5f;
-    public Rigidbody2D rb;
+    [Header("Suit")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer deathSpritePrefab;
+
     private AIDestinationSetter aiDestinationSetter = null;
 
-    [SerializeField] private Animator animator;
+    private Action state = null;
 
     private void Awake() 
     {
         this.aiDestinationSetter = GetComponent<AIDestinationSetter>();
+        this.state = StateActive;
     }
-
-    //private void StateMoveFixed() => rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        this.state?.Invoke();
+    }
+
+    public void SetupDestination(PlayerController player)
+    {
+        this.aiDestinationSetter.target = player.transform;
+    }
+
+    public override void Damage(int damage)
+    {
+        this.health -= damage;
+        if (this.health < 1)
+        {
+            SpriteRenderer deathSprite = Instantiate(this.deathSpritePrefab);
+            deathSprite.transform.position = this.transform.position;
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void StateActive()
+    {
         Vector3 direction = GameManager.Instance.Player.transform.position - this.transform.position;
         direction.z = 0;
         //Debug.Log(Vector3.Normalize(direction));
         this.animator.SetFloat("Horizontal", direction.x);
         this.animator.SetFloat("Vertical", direction.y);
-
-    }
-
-    public override void SetupDestination(PlayerController player)
-    {
-        this.aiDestinationSetter.target = player.transform;
     }
 }

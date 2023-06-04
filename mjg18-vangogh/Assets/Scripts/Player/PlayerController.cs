@@ -49,9 +49,16 @@ public class PlayerController : EntityController
     {
         Vector2 positionOffset = this.transform.position + AttackOffset();
 
-        GameManager.Instance.Splatterer.CreateSplatter(this.selectedColor, positionOffset);
+        ColorInfo colorInfo = GameManager.Instance.GetColorInfo(this.SelectedColor);
+
+        GameManager.Instance.Splatterer.CreateSplatter(this.selectedColor, positionOffset, colorInfo.SplatCount, colorInfo.SplatRadius);
         GameManager.Instance.Splatterer.CreateStroke(this.selectedColor, positionOffset, GetDirectionFacing());
         InstantiateHurtbox(GetDirectionFacing(), positionOffset);
+    }
+
+    public override void Damage(int damage)
+    {
+
     }
 
     private void StateMove()
@@ -92,7 +99,7 @@ public class PlayerController : EntityController
     {
         Hurtbox hurtbox = Instantiate(GetHurtbox(direction));
         hurtbox.transform.position = position;
-        hurtbox.Setup(this.selectedColor);
+        hurtbox.Setup(this.selectedColor, "Enemy");
         return hurtbox;
     }
 
