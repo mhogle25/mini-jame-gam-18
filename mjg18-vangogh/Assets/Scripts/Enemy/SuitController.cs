@@ -44,6 +44,14 @@ public class SuitController : EntityController
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            this.animator.SetTrigger("Attacking");
+        }
+    }
+
     private void StateActive()
     {
         Vector3 direction = GameManager.Instance.Player.transform.position - this.transform.position;
