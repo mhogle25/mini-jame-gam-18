@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
 
     public Animator animator;
-
-    public UnityEvent<Vector2> onAttack = null;
     
 //[SerializeField] is automatic when public, can add when private to make something serialize in the Unity inspector
     private Vector2 movement;
