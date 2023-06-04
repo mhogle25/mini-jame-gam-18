@@ -213,6 +213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  splatDistance: 1
+  hurtboxUpPrefab: {fileID: 1820083369826717871, guid: e9202f2db38d84f55832e667bd905d00, type: 3}
+  hurtboxDownPrefab: {fileID: 8854982038181213919, guid: edf92eb7f23ec435fb5486d537d5f69d, type: 3}
+  hurtboxLeftPrefab: {fileID: 8229988868996195959, guid: ec26ac881c1ea4786ad8fd9cd46df7bd, type: 3}
+  hurtboxRightPrefab: {fileID: 2998951381215635996, guid: d34cf1e4474c94dc9b2398523c9fcf38, type: 3}
   rb: {fileID: 968447184078166857}
   animator: {fileID: 2213542514129511809}
 --- !u!58 &3275068297331583611

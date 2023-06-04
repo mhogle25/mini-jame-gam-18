@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
 
     private readonly Dictionary<PaintColor, ColorInfo> colorInfo = new()
     {
-        { PaintColor.Red,   new ColorInfo { Hue = Color.red, Damage = 5 } },
-        { PaintColor.Green, new ColorInfo { Hue = Color.green, HurtRadius = 1.5f } },
-        { PaintColor.Blue,  new ColorInfo { Hue = Color.blue, Stuns = true } },
+        { PaintColor.Magenta, new ColorInfo { Hue = new Color32(222, 146, 222, 255), Damage = 5 } },
+        { PaintColor.Yellow,  new ColorInfo { Hue = new Color32(212, 205, 110, 255), HurtRadius = 1.5f } },
+        { PaintColor.Cyan,    new ColorInfo { Hue = new Color32(128, 209, 209, 255), Stuns = true } },
     };
 
     private void Awake()

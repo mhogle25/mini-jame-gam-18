@@ -1,6 +1,6 @@
 public enum PaintColor
 {
-    Red,
-    Green,
-    Blue
+    Magenta,
+    Yellow,
+    Cyan
 }

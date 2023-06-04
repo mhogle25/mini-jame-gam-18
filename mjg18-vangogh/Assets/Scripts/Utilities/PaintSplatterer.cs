@@ -3,11 +3,25 @@ using UnityEngine;
 
 public class PaintSplatterer : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] private Splatter[] splatterPrefabs = { };
+    [SerializeField] private Splatter strokeUpPrefab = null;
+    [SerializeField] private Splatter strokeDownPrefab = null;
+    [SerializeField] private Splatter strokeLeftPrefab = null;
+    [SerializeField] private Splatter strokeRightPrefab = null;
+
+    [Header("Splat Properties")]
     [SerializeField] private int splatCount = 5;
     [SerializeField] private float radius = 0.5f;
 
     private readonly Dictionary<PaintColor, List<Splatter>> splatters = new();
+
+    public void CreateStroke(PaintColor paintColor, Vector2 relativePos, Direction direction)
+    {
+        Splatter stroke = InstantiateStroke(direction);
+        stroke.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
+        stroke.transform.position = relativePos;
+    }
 
     public void CreateSplatter(PaintColor paintColor, Vector2 relativePos)
     {
@@ -34,5 +48,17 @@ public class PaintSplatterer : MonoBehaviour
     {
         int randomIndex = Random.Range(0, this.splatterPrefabs.Length);
         return Instantiate(this.splatterPrefabs[randomIndex]);
+    }
+
+    public Splatter InstantiateStroke(Direction direction)
+    {
+        return direction switch
+        {
+            Direction.Up => Instantiate(this.strokeUpPrefab),
+            Direction.Down => Instantiate(this.strokeDownPrefab),
+            Direction.Left => Instantiate(this.strokeLeftPrefab),
+            Direction.Right => Instantiate(this.strokeRightPrefab),
+            _ => throw new System.Exception("What the frick")
+        };
     }
 }
