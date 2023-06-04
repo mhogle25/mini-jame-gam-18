@@ -5,14 +5,13 @@ using UnityEngine;
 public class ScraperController : EntityController
 {
     [Header("Scraper")]
+    [SerializeField] private Animator animator;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private SpriteRenderer deathSpritePrefab;
 
     private LeftRight direction = LeftRight.Left;
     private Vector2 movement;
-
-    private bool dead = false;
 
     public void SetupDirection(LeftRight direction)
     {
@@ -33,14 +32,13 @@ public class ScraperController : EntityController
     protected override void Update()
     {
         base.Update();
-        if (!this.dead)
-            this.movement = DirectionValue();
+        this.movement = DirectionValue();
+        this.animator.SetFloat("Horizontal", this.movement.x);
     }
 
     private void FixedUpdate()
     {
-        if (!this.dead)
-            this.rb.MovePosition(this.rb.position + moveSpeed * Time.fixedDeltaTime * movement);
+        this.rb.MovePosition(this.rb.position + moveSpeed * Time.fixedDeltaTime * movement);
     }
 
     private Vector2 DirectionValue()

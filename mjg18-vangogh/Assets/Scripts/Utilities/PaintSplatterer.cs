@@ -19,13 +19,24 @@ public class PaintSplatterer : MonoBehaviour
     public void CreateStroke(PaintColor paintColor, Vector2 relativePos, Direction direction)
     {
         Splatter stroke = InstantiateStroke(direction);
-        stroke.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
+        stroke.SetColor(paintColor);
         stroke.transform.position = relativePos;
+
+        if (!this.splatters.ContainsKey(paintColor))
+            this.splatters[paintColor] = new();
+
+        this.splatters[paintColor].Add(stroke);
     }
 
     public void CreateSplatter(PaintColor paintColor, Vector2 relativePos)
     {
         CreateSplatter(paintColor, relativePos, this.splatCount, this.radius);
+    }
+
+    public void RemoveSplatter(PaintColor color, Splatter reference)
+    {
+        if (this.splatters.ContainsKey(color))
+            this.splatters[color].Remove(reference);
     }
 
     public void CreateSplatter(PaintColor paintColor, Vector2 relativePos, int splatCount, float radius)
@@ -34,7 +45,7 @@ public class PaintSplatterer : MonoBehaviour
         {
             Vector2 randPos = Random.insideUnitCircle * radius;
             Splatter splatter = InstantiateRandomSplatter();
-            splatter.SetColor(GameManager.Instance.GetColorInfo(paintColor).Hue);
+            splatter.SetColor(paintColor);
             splatter.transform.position = relativePos + randPos;
 
             if (!this.splatters.ContainsKey(paintColor))

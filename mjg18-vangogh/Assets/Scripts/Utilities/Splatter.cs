@@ -5,18 +5,20 @@ using UnityEngine;
 public class Splatter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite = null;
+    private PaintColor color;
 
-    public void SetColor(Color32 color) => this.sprite.color = color;
-
-    // Start is called before the first frame update
-    void Start()
+    public void SetColor(PaintColor color)
     {
-
+        this.sprite.color = GameManager.Instance.GetColorInfo(color).Hue;
+        this.color = color;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (collision.gameObject.name.Contains("Scraper"))
+        {
+            GameManager.Instance.Splatterer.RemoveSplatter(this.color, this);
+            Destroy(this.gameObject);
+        }
     }
 }

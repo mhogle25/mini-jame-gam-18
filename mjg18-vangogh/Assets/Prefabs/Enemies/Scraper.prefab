@@ -119,7 +119,7 @@ Transform:
   m_Children:
   - {fileID: 4611186502975315788}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8612507202692804997
 Animator:
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4843284927625891688}
+  animator: {fileID: 8612507202692804997}
   moveSpeed: 5
   rb: {fileID: 3370798666662073974}
   deathSpritePrefab: {fileID: 8407308339393243952, guid: 667a3fb989c7b42c28ded12e39e213a4, type: 3}
