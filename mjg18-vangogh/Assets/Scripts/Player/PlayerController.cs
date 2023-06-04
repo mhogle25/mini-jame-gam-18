@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : EntityController
 {
     [Header("General Settings")]
     [SerializeField] private float moveSpeed = 4f;
@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
 
     public PaintColor SelectedColor => this.selectedColor;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         this.state?.Invoke();
     }
 

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -21000
   m_Sprite: {fileID: 21300000, guid: 8b9f324e260ed49fba9d597bcde1c1e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,7 +119,7 @@ Transform:
   m_Children:
   - {fileID: 6983639714557305096}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5755874464099837333
 SpriteRenderer:
@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496054c94aea6d846a6ddb9442acbb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 5755874464099837333}
   moveSpeed: 4
   splatDistance: 1
   hurtboxUpPrefab: {fileID: 1820083369826717871, guid: e9202f2db38d84f55832e667bd905d00, type: 3}

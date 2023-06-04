@@ -5,8 +5,6 @@ using Pathfinding;
 
 [RequireComponent(typeof(AIDestinationSetter))]
 public class SuitController : EnemyController
-
-
 {
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
@@ -22,8 +20,9 @@ public class SuitController : EnemyController
     //private void StateMoveFixed() => rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
     // Update is called once per frame
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Vector3 direction = GameManager.Instance.Player.transform.position - this.transform.position;
         direction.z = 0;
         //Debug.Log(Vector3.Normalize(direction));
