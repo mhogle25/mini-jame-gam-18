@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
        movement.x = Input.GetAxisRaw("Horizontal");
        movement.y = Input.GetAxisRaw("Vertical");
 
@@ -29,17 +28,28 @@ public class PlayerController : MonoBehaviour
 
        //attacking, runs animations and shit
        if (Input.GetKeyDown("j"))
-        {
-            Attack();
-        }
+       {
+          Attack();
+       }
 
-
+       if(AreWeMoving())
+       {
+           animator.SetFloat("lastMoveX", movement.x);
+           animator.SetFloat("lastMoveY", movement.y);
+       }
+       else 
+       {
+           float lastMoveX = animator.GetFloat("lastMoveX");
+           float lastMoveY = animator.GetFloat("lastMoveY");
+       }
     }
 
     void Attack()
     {
         //Play an attack animation
         animator.SetTrigger("Attack");
+        //AnimatorStateInfo stateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
+        //Debug.Log(stateInfo.tagHash);
         //Detect enemies in range of attack
         //Apply damage
     }
@@ -48,6 +58,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
+    }
+
+    bool AreWeMoving() {
+        return Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1;
     }
 
 }
