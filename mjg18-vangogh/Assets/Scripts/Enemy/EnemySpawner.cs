@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int numberToSpawn = 5;
     [SerializeField] private float spawnRadius = 0.7f;
 
-    private EnemyController enemyPrefab = null;
+    [SerializeField] private EnemyController enemyPrefab = null;
     private float timer = 0f;
 
     // Update is called once per frame
@@ -34,5 +34,6 @@ public class EnemySpawner : MonoBehaviour
         Vector3 randPos = Random.insideUnitCircle * this.spawnRadius;
         randPos.z = 0;
         enemy.transform.position = this.transform.position + randPos;
+        enemy.SetupDestination(GameManager.Instance.Player);
     }
 }

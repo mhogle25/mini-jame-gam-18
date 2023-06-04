@@ -14,19 +14,16 @@ public class SuitController : EnemyController
     private void Awake() 
     {
         this.aiDestinationSetter = GetComponent<AIDestinationSetter>();
-
-        SetupDestination(GameManager.Instance.Player);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
 
-    void SetupDestination(PlayerController player)
+    public override void SetupDestination(PlayerController player)
     {
         this.aiDestinationSetter.target = player.transform;
     }
-
 }
