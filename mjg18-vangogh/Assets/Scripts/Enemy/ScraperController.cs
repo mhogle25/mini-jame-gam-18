@@ -29,6 +29,11 @@ public class ScraperController : EntityController
         }
     }
 
+    public void AnimScrape()
+    {
+        this.animator.SetTrigger("Scraping");
+    }
+
     protected override void Update()
     {
         base.Update();

@@ -17,6 +17,8 @@ public class Splatter : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Scraper"))
         {
+            ScraperController scraper = collision.gameObject.GetComponent<ScraperController>();
+            scraper.AnimScrape();
             GameManager.Instance.Splatterer.RemoveSplatter(this.color, this);
             Destroy(this.gameObject);
         }
