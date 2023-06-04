@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &13971007
@@ -944,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &63918858
@@ -1230,6 +1230,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &82719047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 82719049}
+  - component: {fileID: 82719048}
+  m_Layer: 0
+  m_Name: A*
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &82719048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82719047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAACAn+unFzludAIAACkFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjGwjQW+sQ0kMSJrSTiy/CWmMNsuSR5ADJ8N+7kmXsUl8sv/16+3blL8KlqSG3Sq81Z8+KAfk+Iu5Mvo164xOc6F7JLf+EzuedM1s6J+p93qjlCvHYhRlVgdU8/yH3wjlHCDaSF0pXK7aHVBlrEC6oMIAmrayLlgh9jcgJX+OlCznjKZm70yeeltHogsccpAXduybBMbqbLvGZL5JpCFjcLafRZDaZJatxtPDBjcwFrWpgrpM+x2Iakixm3k1ij8HD9ZMrIbgJBIk9116AlNamwfbQgXGKDXtW8d0EgRL4vrSB3TX8tSgM2KCHpucHrlG5Ni/5qVo5K2oOLbMPKhpXqaXepnz+zzqOvbnQqnrqqsaRq2BLnh/e6Dmnxg7UHsIPA+JeniMVB7oT8F6CfFFrrRrJ0Gh140IbA8lD/3ltLC0hP/R4S/UGbOpe72643WhdDxff+ykVvNq142yBrVBeb78RoHEyv5Cw3xcTUiDqWPwx8Jvuh4sVDI9cG4um0KV09Haq0c6VrLxmrpvGpkpL8HAgXYOkwp43mMbeDvDGNih7Y3mk7gqF4sHW3YybEA/3/lF0Y9qo43VYplTHZzDla2MFl9CTdoYX1ClVUrb7NdSkC9s2uqD5IGzfcPbvapGc0XgSxYtivkxgPs3H93SWTKKETndsHk/uI+J3j0vsk4pNSzTIg1OTfXKJe9b9WUZrTWu/60zT45p/VmogOZeF2uYaQL62Ga7EQWMRvJVsxTgKtAVrufTzJl8ZESo/AMuuiTLf6epkNc36LBmp+YeyDslI6n8lGXHwdZc3Gj44HF3xLtmFXP4CUEsDBBQAAAgIAACAn+t6LSmkbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSckqiobGBoUWauaVRqrlJsq5ZoqmRsYFRoklSirmhsZmBUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACAn+unFzludAIAACkFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+t6LSmkbQAAAHgAAAAJACQAAAAAAAAAAAAAAMECAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAeQMAAAAA
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!4 &82719049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82719047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &83528564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &124460636
@@ -2472,7 +2559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &156327016
@@ -3647,7 +3734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &240702602
@@ -7358,7 +7445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &516458444
@@ -7738,7 +7825,7 @@ Transform:
   - {fileID: 1600795679}
   - {fileID: 516080089}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531236165
 GameObject:
@@ -9667,7 +9754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &638335885
@@ -10566,7 +10653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!212 &672978140
@@ -11564,7 +11651,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &756702370
 MonoBehaviour:
@@ -11725,7 +11812,7 @@ GameObject:
   - component: {fileID: 763287229}
   - component: {fileID: 763287227}
   - component: {fileID: 763287231}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21242,7 +21329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1373477017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arena Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21266,7 +21353,7 @@ Transform:
   - {fileID: 1977351331}
   - {fileID: 763287230}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374084423
 GameObject:
@@ -21450,7 +21537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &1388446110
@@ -21666,7 +21753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &1406368593
@@ -24638,7 +24725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &1602094361
@@ -25479,7 +25566,7 @@ Transform:
   - {fileID: 90666765}
   - {fileID: 796764495}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677503859
 GameObject:
@@ -29467,7 +29554,7 @@ GameObject:
   - component: {fileID: 1977351330}
   - component: {fileID: 1977351328}
   - component: {fileID: 1977351332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30700,11 +30787,11 @@ Transform:
   m_GameObject: {fileID: 2030306706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1019, y: 0.111, z: 0}
-  m_LocalScale: {x: 104.19, y: 100, z: 1}
+  m_LocalScale: {x: 184.93726, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031895422
 GameObject:
@@ -31792,7 +31879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceOneOutOf: 20
-  numberToSpawn: 5
+  numberToSpawn: 1
   spawnRadius: 0.7
   enemyPrefab: {fileID: 3235702081152632523, guid: f62d3da6edb08c94f8253f0dbf3aabc2, type: 3}
 --- !u!1 &2089675626
@@ -32763,7 +32850,7 @@ GameObject:
   - component: {fileID: 2130358440}
   - component: {fileID: 2130358438}
   - component: {fileID: 2130358442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33336,7 +33423,7 @@ GameObject:
   - component: {fileID: 8738824907200535006}
   - component: {fileID: 9101135815377646118}
   - component: {fileID: 9101135815377646119}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33353,7 +33440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3658530541012493054, guid: 3b31cecc9b4ab4af68f6295425ea6df6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3658530541012493054, guid: 3b31cecc9b4ab4af68f6295425ea6df6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33419,6 +33506,10 @@ PrefabInstance:
       propertyPath: splatterPrefabs.Array.data[4]
       value: 
       objectReference: {fileID: 3371265911307094707, guid: 5b5dfa7328cb94da7b9f9a2ef023f0d6, type: 3}
+    - target: {fileID: 5419727080745671484, guid: 3b31cecc9b4ab4af68f6295425ea6df6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6662761334178921325, guid: 3b31cecc9b4ab4af68f6295425ea6df6, type: 3}
       propertyPath: m_Name
       value: Game Manager
