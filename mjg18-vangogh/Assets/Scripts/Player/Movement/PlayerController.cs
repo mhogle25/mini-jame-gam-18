@@ -1,65 +1,86 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
+
+internal enum Direction
+{
+    Up,
+    Left,
+    Down,
+    Right,
+    Neutral
+}
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 4f;
-    public Rigidbody2D rb;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float splatDistance = 1f;
+    [SerializeField] private Rigidbody2D rb;
 
-    public Animator animator;
+    [SerializeField] private Animator animator;
+
+    private Action state = null;
+    private Action fixedState = null;
+
+    private PaintColor selectedColor = PaintColor.Red;
     
 //[SerializeField] is automatic when public, can add when private to make something serialize in the Unity inspector
     private Vector2 movement;
-//private is implied
+    //private is implied
 
-    void Update()
+    public PaintColor SelectedColor => this.selectedColor;
+
+    private void Update()
     {
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
-
-       animator.SetFloat("Horizontal", movement.x);
-       animator.SetFloat("Vertical", movement.y);
-       animator.SetFloat("Speed", movement.sqrMagnitude);
-
-       //attacking, runs animations and shit
-       if (Input.GetKeyDown("j"))
-       {
-          Attack();
-       }
-
-       if(AreWeMoving())
-       {
-           animator.SetFloat("lastMoveX", movement.x);
-           animator.SetFloat("lastMoveY", movement.y);
-       }
-       else 
-       {
-           float lastMoveX = animator.GetFloat("lastMoveX");
-           float lastMoveY = animator.GetFloat("lastMoveY");
-       }
+        this.state?.Invoke();
     }
 
-    void Attack()
+    private void FixedUpdate()
     {
-        //Play an attack animation
-        animator.SetTrigger("Attack");
-        //AnimatorStateInfo stateInfo = this.animator.GetCurrentAnimatorStateInfo(0);
-        //Debug.Log(stateInfo.tagHash);
-        //Detect enemies in range of attack
-        //Apply damage
+        this.fixedState?.Invoke();
     }
 
-    void FixedUpdate()
+    public void SetStateMove()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
+        this.state = StateMove;
+        this.fixedState = StateMoveFixed;
     }
 
-    bool AreWeMoving() {
+    public void AttackEvent()
+    {
+        GameManager.Instance.Splatterer.CreateSplatter(this.selectedColor, this.transform.position + SplatOffset());
+    }
+
+    private void StateMove()
+    {
+        this.movement.x = Input.GetAxisRaw("Horizontal");
+        this.movement.y = Input.GetAxisRaw("Vertical");
+
+        this.animator.SetFloat("Horizontal", movement.x);
+        this.animator.SetFloat("Vertical", movement.y);
+        this.animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (AreWeMoving())
+        {
+            this.animator.SetFloat("lastMoveX", movement.x);
+            this.animator.SetFloat("lastMoveY", movement.y);
+        }
+
+        //attacking, runs animations and shit
+        if (Input.GetKeyDown(KeyCode.J))
+            this.animator.SetTrigger("Attack");
+    }
+
+    private void StateMoveFixed() => rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+    private bool AreWeMoving() {
         return Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1;
     }
 
+    private Vector3 SplatOffset()
+    {
+        float lastMoveX = this.animator.GetFloat("lastMoveX");
+        float lastMoveY = this.animator.GetFloat("lastMoveY");
+
+        return new Vector3(lastMoveX * this.splatDistance, lastMoveY * this.splatDistance, 0);
+    }
 }

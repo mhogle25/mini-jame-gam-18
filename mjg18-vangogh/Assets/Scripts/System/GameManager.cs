@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public ColorInfo GetColorInfo(PaintColor paintColor)
     {
-        if (this.colorInfo.ContainsKey(paintColor))
+        if (!this.colorInfo.ContainsKey(paintColor))
             return null;
 
         return this.colorInfo[paintColor];
@@ -94,7 +94,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("State Combat");
         this.timeRemaining = this.combatDuration;
-        this.state = StatePrecombat;
+        this.Player.SetStateMove();
+        this.state = StateCombat;
     }
 
     private void SetStatePostcombat()
