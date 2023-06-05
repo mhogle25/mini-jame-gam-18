@@ -55,6 +55,51 @@ public class PaintSplatterer : MonoBehaviour
         }
     }
 
+    public int CyanScore()
+    {
+        if (!this.splatters.ContainsKey(PaintColor.Cyan))
+            return 0;
+        return this.splatters[PaintColor.Cyan].Count;
+    }
+
+    public int MagentaScore()
+    {
+        if (!this.splatters.ContainsKey(PaintColor.Magenta))
+            return 0;
+        return this.splatters[PaintColor.Magenta].Count;
+    }
+
+    public int YellowScore()
+    {
+        if (!this.splatters.ContainsKey(PaintColor.Yellow))
+            return 0;
+        return this.splatters[PaintColor.Yellow].Count;
+    }
+
+    public void ResetSplatters()
+    {
+        if (this.splatters.ContainsKey(PaintColor.Yellow))
+        {
+            foreach (Splatter splatter in this.splatters[PaintColor.Yellow])
+                Destroy(splatter.gameObject);
+            this.splatters[PaintColor.Yellow].Clear();
+        }
+
+        if (this.splatters.ContainsKey(PaintColor.Magenta))
+        {
+            foreach (Splatter splatter in this.splatters[PaintColor.Magenta])
+                Destroy(splatter.gameObject);
+            this.splatters[PaintColor.Magenta].Clear();
+        }
+
+        if (this.splatters.ContainsKey(PaintColor.Cyan))
+        {
+            foreach (Splatter splatter in this.splatters[PaintColor.Cyan])
+                Destroy(splatter.gameObject);
+            this.splatters[PaintColor.Cyan].Clear();
+        }
+    }
+
     private Splatter InstantiateRandomSplatter()
     {
         int randomIndex = Random.Range(0, this.splatterPrefabs.Length);

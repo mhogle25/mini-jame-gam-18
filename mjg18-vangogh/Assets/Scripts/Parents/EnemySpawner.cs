@@ -14,6 +14,12 @@ public abstract class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!GameManager.Instance.InCombat)
+            return;
+
+        if (GameManager.Instance.ExceededEnemyLimits)
+            return;
+
         this.timer += Time.deltaTime;
         if (this.timer % 60 > 1)
         {

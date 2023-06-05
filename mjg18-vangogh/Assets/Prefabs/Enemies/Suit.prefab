@@ -122,7 +122,7 @@ Transform:
   m_Children:
   - {fileID: 3876638614944270569}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4787071637595587725
 SpriteRenderer:
@@ -191,6 +191,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4787071637595587725}
   animator: {fileID: 4349874494184568390}
   deathSpritePrefab: {fileID: 4411294047709714418, guid: d50ecb47a9c2a46abb45c68865a8aec8, type: 3}
+  hurtboxPrefab: {fileID: 5460479188458983839, guid: a98aeacb37782495d9fec51a3a1b2414, type: 3}
+  hurtboxDistance: 1
 --- !u!95 &4349874494184568390
 Animator:
   serializedVersion: 5

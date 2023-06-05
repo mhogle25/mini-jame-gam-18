@@ -28,6 +28,8 @@ public class PlayerController : EntityController
 
     public PaintColor SelectedColor => this.selectedColor;
 
+    private float MoveSpeed => this.moveSpeed + GameManager.Instance.GetColorInfo(this.selectedColor).PlayerSpeed;
+
     protected override void Update()
     {
         base.Update();
@@ -58,7 +60,11 @@ public class PlayerController : EntityController
 
     public override void Damage(int damage)
     {
+    }
 
+    public void SetColor(PaintColor color)
+    {
+        this.selectedColor = color;
     }
 
     private void StateMove()
@@ -81,7 +87,7 @@ public class PlayerController : EntityController
             this.animator.SetTrigger("Attack");
     }
 
-    private void StateMoveFixed() => rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
+    private void StateMoveFixed() => rb.MovePosition(rb.position + MoveSpeed * Time.fixedDeltaTime * movement);
 
     private bool AreWeMoving() {
         return Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1;

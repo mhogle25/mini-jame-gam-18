@@ -25,6 +25,7 @@ public class ScraperController : EntityController
         {
             SpriteRenderer deathSprite = Instantiate(this.deathSpritePrefab);
             deathSprite.transform.position = this.transform.position;
+            GameManager.Instance.DownEnemyCount(this);
             Destroy(this.gameObject);
         }
     }
@@ -54,5 +55,14 @@ public class ScraperController : EntityController
             LeftRight.Right => new Vector2(1, 0),
             _ => throw new System.Exception("Fr*ck")
         };
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Wall"))
+        {
+            GameManager.Instance.DownEnemyCount(this);
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -40,8 +40,13 @@ public class SuitController : EntityController
         {
             SpriteRenderer deathSprite = Instantiate(this.deathSpritePrefab);
             deathSprite.transform.position = this.transform.position;
+            GameManager.Instance.DownEnemyCount(this);
             Destroy(this.gameObject);
         }
+    }
+
+    public void AttackEvent()
+    {
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,7 +61,6 @@ public class SuitController : EntityController
     {
         Vector3 direction = GameManager.Instance.Player.transform.position - this.transform.position;
         direction.z = 0;
-        //Debug.Log(Vector3.Normalize(direction));
         this.animator.SetFloat("Horizontal", direction.x);
         this.animator.SetFloat("Vertical", direction.y);
     }

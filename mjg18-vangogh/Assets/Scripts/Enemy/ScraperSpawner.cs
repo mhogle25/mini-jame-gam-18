@@ -15,5 +15,6 @@ public class ScraperSpawner : EnemySpawner
         randPos.z = 0;
         enemy.transform.position = this.transform.position + randPos;
         enemy.SetupDirection(this.movementDirection);
+        GameManager.Instance.UpEnemyCount(enemy);
     }
 }

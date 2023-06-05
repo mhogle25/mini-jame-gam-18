@@ -8,5 +8,5 @@ public class ColorInfo
     public int Damage { get; set; } = 3;
     public float SplatRadius { get; set; } = 0.5f;
     public int SplatCount { get; set; } = 5;
-    public bool Stuns { get; set; } = true;
+    public float PlayerSpeed { get; set; } = 0f;
 }

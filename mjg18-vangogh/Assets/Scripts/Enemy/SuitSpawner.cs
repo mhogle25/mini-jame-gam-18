@@ -14,5 +14,6 @@ public class SuitSpawner : EnemySpawner
         randPos.z = 0;
         enemy.transform.position = this.transform.position + randPos;
         enemy.SetupDestination(GameManager.Instance.Player);
+        GameManager.Instance.UpEnemyCount(enemy);
     }
 }
